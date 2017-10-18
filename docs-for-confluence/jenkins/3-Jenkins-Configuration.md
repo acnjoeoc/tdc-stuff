@@ -8,15 +8,18 @@ Steps to configure Jenkins for use with Stormtest are as listed below. Detailed 
 * 2) Increase number of build executors
 * 3) Prevent Jenkins log style overwriting Stormtest style
 * 4) Install custom plugins
-* 5) Create Blank jobs
-* 6) Create Official View
-* 7) Create SSH keys for Jenkins
-* 8) Add public key to GitHub account
-* 9) Configure *RunTestOnSlot* job
-* 10) Configure *RunTestSuite* job
-
-_*PLEASE NOTE all of the above setup steps have already been performed. So really the material here is more for background reading than anything else*_
-
+* 5) Change Jenkins Root Directories
+* 6) Create Blank jobs
+* 7) Create Official View
+* 8) Create SSH keys for Jenkins
+* 9) Add public key to GitHub account
+* 10) Configure *RunTestOnSlot* job
+* 11) Configure *RunTestSuite* job
+\\
+----
+_*PLEASE NOTE all of the above setup steps have already been performed. So really the remainder of this section is more for reference than anything else*_
+----
+\\
 h2. 1) Add users to Jenkins
 ----
 * 1) From Jenkins left hand menu select *Manage Jenkins* and then scroll down page to option *Manage Users* and select it. The page presented is as shown below and will only show the single entry of the *Default Admin* user as that was the user who installed Jenkins;
@@ -75,7 +78,11 @@ During the installation of Jenkins (Refer: 2-Jenkins-Installation) we selected t
 
 * 4) Repeat selection for all plugins listed above.
 
-h2. 5) Create Blank jobs
+h2. 5) Change Jenkins Root Directories
+----
+JOEOC - TODO
+
+h2. 6) Create Blank jobs
 ----
 As outlined in section *1-Jenkins-Introduction* to do anything in Jenkins we first need to create a *job*. For our purposes we will need two jobs to be created as follows;
 * 1) *RunTestOnSlot* job will provided ability to schedule a test run of a single test on any slot on the Stormtest Rack.
@@ -91,7 +98,7 @@ A *job* e.g. *RunTestOnSlot* can be created by following steps;
 * 5) Click on *Save* to save the new *RunTestOnSlot* job.
 * 6) Repeat above steps to create the *RunTestSuite* job
 
-h2. 6) Create Official View
+h2. 7) Create Official View
 ----
 As more and more jobs are created, some will be used for personal developer needs and others represent formal/official jobs. We can separate the jobs into specific *Views*. By default all jobs are visible under the *All* tab on Jenkins home page. In this section we will create a new *View* called *Official* to list all formal/official jobs.
 * 1) From Jenkins main page select the *+* symbol next to the *All* tab. This will open the *New VIew* page.
@@ -103,7 +110,7 @@ As more and more jobs are created, some will be used for personal developer need
 * 5) "Save" the changes
 * 6) In time more "Views" can be added as needed e.g. "SANITY", "REGRESSION", "PERFORMANCE", "OTA", "AGING", "TIMESHIFT", "NPVR", etc...
 
-h2. 7) Create SSH keys for Jenkins
+h2. 8) Create SSH keys for Jenkins
 ----
 For our test jobs to be of any use they will need to clone the TDC Git repository from GitHub. To facilate this SSH keys for Jenkins will need to be created and the public key will need to be added to GitHub while the private key will be need to be added to each Jenkins job which requires GitHub access (Refer to Sections 8 & 9 below).
 _*Note: The nesessary tool "puttygen" would have been installed already as per instructions in section "2-Jenkins-Installation"*_ 
@@ -115,7 +122,7 @@ _*Note: The nesessary tool "puttygen" would have been installed already as per i
 * 4) Select to save the private key and call the file *"id_rsa.ppk"*
 * 5) Select to save the public key and call the file *"id_rsa_public.ppk"*
 
-h2. 8) Add public key to GitHub account
+h2. 9) Add public key to GitHub account
 ----
 To allow Jenkins to gain access to the TDC GitHub repository, it is necessary to add the public part of the SSH keys just generated in previous section to an account on GitHub. Currently at the time of writing the key has been added to contractor oconnor@tdc.dk account *however* it will shortly be added to Thomas von Eyben (teve@tdc.dk) account as well.
 * 1) Login into your account on GitHub and select *settings* page. On page presented select *SSH and GPG Keys*
@@ -128,10 +135,11 @@ To allow Jenkins to gain access to the TDC GitHub repository, it is necessary to
 !jenkins-config-github-ssh-saved.png|align=center,width=400,height=300!
 * 6) You can exit GitHub now.
 
-h2. 9) Configure *RunTestOnSlot* job
+h2. 10) Configure *RunTestOnSlot* job
 ----
+JOEOC - TODO
 
-
-h2. 10) Configure *RunTestSuite* job
+h2. 11) Configure *RunTestSuite* job
 ----
+JOEOC - TODO
 
