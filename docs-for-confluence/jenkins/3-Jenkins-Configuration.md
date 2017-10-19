@@ -9,12 +9,12 @@ Steps to configure Jenkins for use with Stormtest are as listed below. Detailed 
 * 3) Prevent Jenkins log style overwriting Stormtest style
 * 4) Install custom plugins
 * 5) Change Jenkins Root Directories
-* 6) Create Blank jobs
+* 6) Create First job *RunTestOnSlot*
 * 7) Create Official View
 * 8) Create SSH keys for Jenkins
 * 9) Add public key to GitHub account
 * 10) Configure *RunTestOnSlot* job
-* 11) Configure *RunTestSuite* job
+* 11) Create *RunTestSuite* job from *RunTestOnSlot* job
 \\
 ----
 _*PLEASE NOTE all of the above setup steps have already been performed. So really the remainder of this section is more for reference than anything else*_
@@ -73,16 +73,22 @@ During the installation of Jenkins (Refer: 2-Jenkins-Installation) we selected t
 !jenkins-config-plugins-select.png|align=center!
 
 * 3) Select the rebuilder and cick on *Install without restart* button. You should confirm the successfull installation by observing the blue icon after the plugin as indicated below;
-
 !jenkins-config-plugins-success.png|align=center!
-
 * 4) Repeat selection for all plugins listed above.
 
 h2. 5) Change Jenkins Root Directories
 ----
-JOEOC - TODO
+By default each Jenkins build executor which executes a job will create its own workspaces. By default these workspaces are stored in *"C:\Program Files (x86)\Jenkins\workspace\*"*, however it better practice to store these artifacts on D: drive under directory called "jenkins-workspaces". 
+* 1) From the Jenkins main menu select *Manage Jenkins* and on page presented select *Configure System* and from this page click on the *Advanced* from the *Home directory* option which then presents the page as outlined below;
 
-h2. 6) Create Blank jobs
+!jenkins-config-dirs-root.png|align=center!
+
+* 2) Modify the "Workspace Root Directory* and *Build Record Root Directory* fields to that shown in below picture;
+
+!jenkins-config-dirs-tdc.png|align=center!
+
+
+h2. 6) Create First job "RunTestOnSlot"
 ----
 As outlined in section *1-Jenkins-Introduction* to do anything in Jenkins we first need to create a *job*. For our purposes we will need two jobs to be created as follows;
 * 1) *RunTestOnSlot* job will provided ability to schedule a test run of a single test on any slot on the Stormtest Rack.
@@ -96,7 +102,8 @@ A *job* e.g. *RunTestOnSlot* can be created by following steps;
 * 4) Enter the description/purpose of the *job* into the *Description* field.
 !jenkins-config-job-desc.png|align=center!
 * 5) Click on *Save* to save the new *RunTestOnSlot* job.
-* 6) Repeat above steps to create the *RunTestSuite* job
+* 6) To create the other job *RunTestSuite* the previous steps could be repeated. However there is a quicker way to create new jobs from existing jobs and this will be discussed in section 11) Create *RunTestSuite* job from *RunTestOnSlot* job
+
 
 h2. 7) Create Official View
 ----
@@ -139,7 +146,7 @@ h2. 10) Configure *RunTestOnSlot* job
 ----
 JOEOC - TODO
 
-h2. 11) Configure *RunTestSuite* job
+h2. 11) Create *RunTestSuite* job from *RunTestOnSlot* job
 ----
 JOEOC - TODO
 
